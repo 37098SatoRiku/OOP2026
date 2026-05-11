@@ -3,10 +3,11 @@ namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
             var songs = new List<Song>();
-            for(; ; ) {
+            Console.WriteLine("*****曲の登録*****");
+            while(true) {
                 Console.Write("曲名:");
                 var title = Console.ReadLine();
-                if(title == "end") {
+                if(string.Compare(title, "END", ignoreCase:true) == 0) {
                     Console.WriteLine("");
                     break;
                 }
