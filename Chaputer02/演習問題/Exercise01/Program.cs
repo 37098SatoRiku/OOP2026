@@ -2,19 +2,27 @@
 namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
-            var songs = new Song[]{
-            new Song("Let it be","The Beatles",243),
-            new Song("Bridge Over Troubled Water","Simon & Garfunkel",293),
-            new Song("Close To You","Carpenters",276),
-            new Song("Honesty","Billy Joel",231),
-            new Song("I Will Always Love You","Whitney Houston",273)
-            };
+            var songs = new List<Song>();
+            for(; ; ) {
+                Console.Write("曲名:");
+                var title = Console.ReadLine();
+                if(title == "end") {
+                    Console.WriteLine("");
+                    break;
+                }
+                Console.Write("アーティスト名:");
+                var artistname = Console.ReadLine();
+                Console.Write("演奏時間(秒):");
+                int length = int.Parse(Console.ReadLine());
+                songs.Add(new Song(title, artistname, length));
+                Console.WriteLine("");
+            }
             PrintSongs(songs);
         }
         //Mainメソッド内のPrintSongs(songs);をクリックしてAlt+Enterを押すと以下のメソッドが自動的に作成される
-        private static void PrintSongs(Song[] songs) {
+        private static void PrintSongs(List<Song> songs) {
             foreach(var Song in songs) {
-                Console.WriteLine(Song.Title + "," + Song.ArtistName + "," + Song.Length / 60 + ":" + (Song.Length % 60).ToString("00"));
+                Console.WriteLine($"{Song.Title},{Song.ArtistName},{Song.Length / 60}:{(Song.Length % 60).ToString("00")}");
             }
         }
     }
