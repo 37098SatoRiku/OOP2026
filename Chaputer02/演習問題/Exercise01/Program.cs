@@ -1,5 +1,5 @@
 ﻿
-namespace Exercise01 {
+namespace Exercise01  {
     internal class Program {
         static void Main(string[] args) {
             var songs = new List<Song>();
@@ -23,7 +23,7 @@ namespace Exercise01 {
         //Mainメソッド内のPrintSongs(songs);をクリックしてAlt+Enterを押すと以下のメソッドが自動的に作成される
         private static void PrintSongs(List<Song> songs) {
             foreach(var Song in songs) {
-                Console.WriteLine($"{Song.Title},{Song.ArtistName},{Song.Length / 60}:{(Song.Length % 60).ToString("00")}");
+                Console.WriteLine($"{Song.Title},{Song.ArtistName} {Song.Length / 60}:{(Song.Length % 60).ToString("00")}");
             }
         }
     }
