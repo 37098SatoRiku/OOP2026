@@ -34,7 +34,7 @@ namespace SalesCalculator {
 
         //店舗別売上を求める
         public IDictionary<string, int> GetPerStoreSales() {
-           var dict = new SortedDictionary<string, int>();
+            var dict = new SortedDictionary<string, int>();
 
             foreach(var sale in _sales) {
                 if(dict.ContainsKey(sale.ShopName))//既に店舗名が辞書のキーに登録されているか
@@ -46,5 +46,22 @@ namespace SalesCalculator {
             }
             return dict;
         }
+
+
+        //商品カテゴリ別売上を求める
+        public IDictionary<string, int> GetPerCategorySales() {
+            var dict = new SortedDictionary<string, int>();
+
+            foreach(var sale in _sales) {
+                if(dict.ContainsKey(sale.ProductCategory))//既に商品カテゴリ名が辞書のキーに登録されているか
+                    //登録されている場合
+                    dict[sale.ProductCategory] += sale.Amount;//売上を足しこみ
+                else
+                    //未登録の場合
+                    dict[sale.ProductCategory] = sale.Amount;//新規に売り上げを登録            
+            }
+            return dict;
+        }
+
     }
 }
