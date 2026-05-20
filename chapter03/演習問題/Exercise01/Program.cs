@@ -9,12 +9,12 @@ namespace Exercise01 {
             Exercise1(numbers);
 
             // 3.1.2
-            Exercise2(numbers);
             Console.WriteLine("---3.1.2---");
+            Exercise2(numbers);
 
             // 3.1.3
-            Exercise3(numbers);
             Console.WriteLine("---3.1.3---");
+            Exercise3(numbers);
 
             // 3.1.4
             Console.WriteLine("---3.1.4---");
@@ -32,7 +32,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise2(List<int> numbers) {
-          
+            numbers.ForEach(n => Console.WriteLine(n / 2.0));
         }
 
         private static void Exercise3(List<int> numbers) {
