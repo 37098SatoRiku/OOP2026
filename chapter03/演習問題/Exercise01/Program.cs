@@ -36,7 +36,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<int> numbers) {
-           
+            IEnumerable<int> number = numbers.Where(n => n >= 50);
         }
 
         private static void Exercise4(List<int> numbers) {
