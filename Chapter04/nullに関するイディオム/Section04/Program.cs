@@ -33,6 +33,16 @@ namespace Section04 {
             int? amount = sale?.Amount;
             Console.WriteLine("売上高:" + amount);
             #endregion
+
+            #region 2つの要素を入れ替える
+            int a = 10;
+            int b = 20;
+            Console.WriteLine("a = " + a + " b = "+ b);
+            //var temp = a; a = b; b = temp;
+            (b, a) = (a, b);
+            Console.WriteLine("入れ替え後");
+            Console.WriteLine("a = " + a + " b = " + b);
+            #endregion
         }
 
         private static string Defaultmessage() {
