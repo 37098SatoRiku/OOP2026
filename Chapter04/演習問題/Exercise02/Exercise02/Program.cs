@@ -13,19 +13,18 @@ namespace Exercise02 {
         private static void Exercise1() {
             //if-else文を使用
             Console.Write("整数");
-            var line = Console.ReadLine();
-            if(int.TryParse(line, out var number)) {
+            if(int.TryParse(Console.ReadLine(), out var number)) {
+                if(number < 0) {
+                    Console.WriteLine(number);
+                } else if(number < 100) {
+                    Console.WriteLine(number * 2);
+                } else if(number < 500) {
+                    Console.WriteLine(number * 3);
+                } else {
+                    Console.WriteLine(number);
+                }
             } else {
                 Console.WriteLine("入力値に誤りがあります。");
-            }
-            if(number < 0) {
-                Console.WriteLine(number);
-            } else if(number < 100) {
-                Console.WriteLine(number * 2);
-            } else if(number < 500) {
-                Console.WriteLine(number * 3);
-            } else {
-                Console.WriteLine(number);
             }
         }
 

@@ -24,7 +24,6 @@ namespace Exercise01 {
                 }
             }
 
-
             //for文
             Console.WriteLine("\nfor文で出力");
             for(int n = 0; n < langs.Count; n++) {
@@ -32,7 +31,6 @@ namespace Exercise01 {
                     Console.WriteLine(langs[n]);
                 }
             }
-
 
             //while文
             Console.WriteLine("\nwhile文で出力");
@@ -53,11 +51,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<string> langs) {
-            var name = langs.Find(n => n.Length == 10);
-            if(name is null) {
-                name = "unknown";
-            }
-            Console.WriteLine(name);
+            Console.WriteLine(langs.Find(n => n.Length == 10) ?? "unknown");
         }
     }
 }
