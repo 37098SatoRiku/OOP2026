@@ -10,14 +10,14 @@ namespace Exercise01 {
         public int Year { get; private set; } = Year;
         public int Month { get; private set; } = Month;
 
-        public bool Is21Century() { 
-          if(Year >= 2001 && 2100 >= Year) {
+        public bool Is21Century() {
+            if(Year >= 2001 && 2100 >= Year) {
                 return true;
             }
             return false;
         }
 
-        public  YearMonth AddOneMonth() {
+        public YearMonth AddOneMonth() {
             if(Month == 12) {
                 return new YearMonth(Year + 1, 1);
             }

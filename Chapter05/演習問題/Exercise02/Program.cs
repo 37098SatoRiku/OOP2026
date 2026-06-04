@@ -2,6 +2,8 @@
 namespace Exercise02 {
     internal class Program {
         static void Main(string[] args) {
+
+
             // 5.2.1
             var ymCollection = new YearMonth[] {
                 new YearMonth(1980, 1),
@@ -15,12 +17,7 @@ namespace Exercise02 {
             Exercise2(ymCollection);
 
             Console.WriteLine("5.2.4");
-            var result = Exercise4(ymCollection);
-            if(result is not null) {
-                Console.WriteLine(result);
-            } else {
-                Console.WriteLine("21世紀のデータはありません。");
-            }
+            Console.WriteLine(Exercise4(ymCollection)?.ToString()??"21世紀のデータはありません。");
 
             Console.WriteLine("5.2.5");
             Exercise5(ymCollection);
@@ -32,14 +29,10 @@ namespace Exercise02 {
             }
         }
 
-        private static YearMonth Exercise4(YearMonth[] ymCollection) {
-            foreach(var item in ymCollection) {
-                if(item.Is21Century()) {
-                    return item;
-                }
-            }
-            return null;
+        private static YearMonth? Exercise4(YearMonth[] ymCollection) {
+            return ymCollection.FirstOrDefault(item => item.Is21Century());
         }
+
 
         private static void Exercise5(YearMonth[] ymCollection) {
             YearMonth[] result = ymCollection.Select(x => x.AddOneMonth()).ToArray();
