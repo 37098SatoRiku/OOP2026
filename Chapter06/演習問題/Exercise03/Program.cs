@@ -52,8 +52,15 @@ namespace Exercise03 {
         //アルファベットの数を表示する
         private static void Exercise6(string text) {
             var dict = new Dictionary<char, int>();
-            foreach(char c in text) {
-                ;
+            foreach(char c in text.Replace(" ", "")) {
+                if(dict.ContainsKey(c)) {
+                    dict[c]++;
+                } else {
+                    dict[c] = 1;
+                }
+            }
+            foreach(var result in dict) {
+                Console.WriteLine($"{result.Key} = {result.Value}");
             }
         }
     }
