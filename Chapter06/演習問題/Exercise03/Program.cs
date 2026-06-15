@@ -30,14 +30,15 @@ namespace Exercise03 {
         }
 
         private static void Exercise2(string text) {
-            Console.WriteLine(text.Replace("big", "small"));            
+            Console.WriteLine(text.Replace("big", "small"));
         }
 
         private static void Exercise3(string text) {
             var sb = new StringBuilder();
             foreach(var word in text.Split(' ')) {
-                Console.WriteLine(sb.Append(word + ' '));
+                sb.Append(word + ' ');
             }
+            Console.WriteLine(sb.ToString().TrimEnd() + ':');
         }
 
         private static void Exercise4(string text) {
@@ -45,23 +46,57 @@ namespace Exercise03 {
         }
 
         private static void Exercise5(string text) {
-            Console.WriteLine("4文字以下の単語\n" + string.Join(",",text.Split(' ').Where(w => w.Length <= 4)));
-            
+            Console.WriteLine("4文字以下の単語\n" + string.Join(",", text.Split(' ').Where(w => w.Length <= 4)));
+
         }
 
-        //アルファベットの数を表示する
+        
         private static void Exercise6(string text) {
-            var dict = new Dictionary<char, int>();
-            foreach(char c in text.Replace(" ", "")) {
+            //アルファベットの数を表示する
+            /*var dict = new SortedDictionary<char, int>();
+            foreach(char c in text.ToLower().Replace(" ", "")) {
                 if(dict.ContainsKey(c)) {
-                    dict[c]++;
+                    dict[c]++;    //登録されている場合
                 } else {
-                    dict[c] = 1;
+                    dict[c] = 1;  //未登録の場合
                 }
             }
             foreach(var result in dict) {
                 Console.WriteLine($"{result.Key} = {result.Value}");
+            }*/
+
+
+
+
+            /*ディクショナリを使った集計
+            var alphDicCount = Enumerable.Range('a', 26).ToDictionary(num => ((char)num), num => 0);
+            foreach(var c in text.ToLower().Replace(" ", "")) {
+                alphDicCount[c]++;
             }
+            foreach(var word in alphDicCount) {
+                Console.WriteLine($"{word.Key} = {word.Value}");
+            }*/
+
+
+
+
+            /*配列を用いた集計
+            var array = Enumerable.Repeat(0, 26).ToArray();
+            foreach(var alph in text.ToLower().Replace(" ", "")) {
+                array[alph - 'a']++;
+            }
+            for(char ch = 'a'; ch <= 'z'; ch++) {
+                Console.WriteLine($"{ch}:{array[ch - 'a']}");
+            }*/
+
+
+
+
+            //aから順にカウント
+            for(char ch = 'a'; ch <='z'; ch++) {
+                Console.WriteLine($"{ch}:{text.ToLower().Replace(" ","").Count(c => c == ch)}");
+            }
+
         }
     }
 }
