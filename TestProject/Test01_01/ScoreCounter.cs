@@ -11,26 +11,28 @@
         private static IEnumerable<Student> ReadScore(string filePath) {
             var sales = new List<Student>();
             var lines = File.ReadAllLines(filePath);
-            
-
-
-
-
-
-
-
+            foreach(var line in lines) {
+                var items = line.Split(',');
+                var student = new Student {
+                    Name = items[0],
+                    Subject = items[1],
+                    Score = int.Parse(items[2])
+                };
+                sales.Add(student);
+            }
             return sales;
         }
 
         //メソッドの概要：
         public IDictionary<string, int> GetPerStudentScore() {
             var dict = new Dictionary<string, int>();
-
-
-
-
-
-
+            foreach(var score in _score) {
+                if(_score.Contains(score)) {
+                    dict[score.Subject] += score.Score;
+                } else {
+                    dict[score.Subject] = score.Score;
+                }
+            }
             return dict;
         }
     }
