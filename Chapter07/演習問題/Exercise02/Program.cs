@@ -60,7 +60,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise6(List<Book> books) {
-            foreach(var book1 in books.Where(x => x.Pages >= 400).OrderBy(x => x.Price)) {
+            foreach(var book1 in books.Where(x => x.Pages >= 400).OrderByDescending(x => x.Price)) {
                 Console.WriteLine($"{book1.Title}  {book1.Price}円");
             }
         }
@@ -69,7 +69,6 @@ namespace Exercise02 {
             foreach(var book2 in books.Where(x => x.Title.Contains("C#") && x.Pages <= 500)) {
                 Console.WriteLine(book2.Title);
             }
-
         }
     }
 }
