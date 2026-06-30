@@ -6,11 +6,15 @@ public class Abbreviations {
 
     // コンストラクター
     public Abbreviations() {
-        var lines = File.ReadAllLines("./Abbreviations.txt");
-        _dict = lines
-            .Select(line => line.Split('='))
-            .ToDictionary(x => x[0], x => x[1]);
+        try {
+            var lines = File.ReadAllLines("./Abbreviations.txt");
+            _dict = lines.Select(line => line.Split('=')).ToDictionary(x => x[0], x => x[1]);
+        } catch(Exception ex) {
+            Console.WriteLine("ファイル読み込みエラー: " + ex.Message);
+            _dict = new Dictionary<string, string>();
+        }
     }
+
 
     // 要素を追加
     public void Add(string abbr, string japanese) =>
@@ -26,10 +30,26 @@ public class Abbreviations {
 
     // 日本語の部分文字列を引数に与え、それが含まれる要素(Key,Value)をすべて取り出す
     public IEnumerable<(string, string)> FindAll(string substring) {
-        foreach (var (key, value) in _dict) {
-            if (value.Contains(substring)) {
+        foreach(var (key, value) in _dict) {
+            if(value.Contains(substring)) {
                 yield return (key, value);
             }
+        }
+    }
+    //8.2.1
+    public int Count() {
+        return _dict.Count;
+    }
+
+    //8.2.2
+    public bool Remove(string abb) {
+        return _dict.Remove(abb);
+    }
+
+    //8.2.4
+    public void Count3() {
+        foreach(var result in _dict.Keys.Where(x => x.Length == 3)) {
+            Console.WriteLine(result);
         }
     }
 }

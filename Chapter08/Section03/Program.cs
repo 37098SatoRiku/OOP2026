@@ -35,6 +35,14 @@
                 Console.WriteLine($"{key}={value}");
             }
             Console.WriteLine();
+
+            //8.2.3
+            //Countメソッドの呼び出し
+            abbrs.Count();
+            //Removeメソッドの呼び出し
+            abbrs.Remove("ILO");
+
+            abbrs.Count3();
         }
     }
 }
