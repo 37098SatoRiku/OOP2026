@@ -83,7 +83,7 @@
         //問題４　10以上50以下の数字のみを表示（即時実行でも可とする）
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(int[] numbers) {
-            foreach(var number in numbers.Where(x => 10 <= x && x >= 50)) {
+            foreach(var number in numbers.Where(x => 10 <= x && x <= 50)) {
                 Console.WriteLine(number);
             }
         }
@@ -111,7 +111,9 @@
         //          Paris
         //          Tokyo】
         private static void Exercise07(List<string> cities) {
-
+            foreach(var item in cities.OrderBy(x => x)) {
+                Console.WriteLine(item);
+            }
         }
 
         //問題８　各都市の文字数
@@ -142,12 +144,9 @@
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-            foreach(var citie in cities.OrderBy(x =>x) ){
-                var item = citie.Length;
-                Console.WriteLine($"{citie}:{item}文字");
+            foreach(var citie in cities.OrderBy(x => x.Length)) {
+                Console.WriteLine($"{citie}:{citie.Length}文字");
             }
-
-
         }
 
         //問題１０　６文字の都市名を表示
