@@ -12,10 +12,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise01(string text) {
-             var dict = new SortedDictionary<char, int>();
+            var dict = new SortedDictionary<char, int>();
             for(int i = 0; i < text.Length; i++) {
                 var ch = text.ToUpper()[i];
-            if('A' <= ch && ch <= 'Z') {
+                if('A' <= ch && ch <= 'Z') {
                     if(dict.ContainsKey(ch)) {
                         dict[ch]++;
                     } else {
@@ -29,7 +29,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise02(string text) {
-           
+
         }
     }
 }

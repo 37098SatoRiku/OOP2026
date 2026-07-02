@@ -6,8 +6,8 @@ public class Abbreviations {
 
     // コンストラクター
     public Abbreviations() {
-            var lines = File.ReadAllLines("./Abbreviations.txt");
-            _dict = lines.Select(line => line.Split('=')).ToDictionary(x => x[0], x => x[1]);
+        var lines = File.ReadAllLines("./Abbreviations.txt");
+        _dict = lines.Select(line => line.Split('=')).ToDictionary(x => x[0], x => x[1]);
     }
 
 
@@ -32,7 +32,7 @@ public class Abbreviations {
         }
     }
     //8.2.1
-    public int Count() =>  _dict.Count;
+    public int Count() => _dict.Count;
 
     //8.2.2
     public bool Remove(string abb) => _dict.Remove(abb);
