@@ -38,10 +38,11 @@
 
             //8.2.3
             //Countメソッドの呼び出し
-            abbrs.Count();
+            Console.WriteLine($"8.2.3\n登録されている用語の数:{abbrs.Count()}\n");
             //Removeメソッドの呼び出し
-            abbrs.Remove("ILO");
+            Console.WriteLine($"8.2.3\n{abbrs.Remove("ILO")}\n");
 
+            //8.2.4
             abbrs.Count3();
         }
     }

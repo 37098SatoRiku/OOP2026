@@ -6,13 +6,8 @@ public class Abbreviations {
 
     // コンストラクター
     public Abbreviations() {
-        try {
             var lines = File.ReadAllLines("./Abbreviations.txt");
             _dict = lines.Select(line => line.Split('=')).ToDictionary(x => x[0], x => x[1]);
-        } catch(Exception ex) {
-            Console.WriteLine("ファイル読み込みエラー: " + ex.Message);
-            _dict = new Dictionary<string, string>();
-        }
     }
 
 
@@ -37,17 +32,14 @@ public class Abbreviations {
         }
     }
     //8.2.1
-    public int Count() {
-        return _dict.Count;
-    }
+    public int Count() =>  _dict.Count;
 
     //8.2.2
-    public bool Remove(string abb) {
-        return _dict.Remove(abb);
-    }
+    public bool Remove(string abb) => _dict.Remove(abb);
 
     //8.2.4
     public void Count3() {
+        Console.WriteLine("8.2.4\n3文字の省略語");
         foreach(var result in _dict.Keys.Where(x => x.Length == 3)) {
             Console.WriteLine(result);
         }
