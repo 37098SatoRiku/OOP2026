@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Section01 {
     public partial class Form1 : Form {
         public Form1() {
@@ -5,45 +7,33 @@ namespace Section01 {
         }
 
         private void btGet_Click(object sender, EventArgs e) {
-            DateTime dt1 = dtpDate.Value;
-            if(DateTime.IsLeapYear(dt1.Year)) {
-                tbOut.Text = "‚¤‚é‚¤”N‚Å‚·";
-            } else {
-                tbOut.Text = "‚¤‚é‚¤”N‚Å‚Í‚ ‚è‚Ü‚¹‚ñ";
-            }
-
-            DayOfWeek dayOfWeek = dt1.DayOfWeek;
-            if(dayOfWeek == DayOfWeek.Tuesday) {
-                tbOut.Text = "¡“ú‚Í‰Î—j“ú‚Å‚·";
-            }
-
-            switch(dayOfWeek) {
-                case DayOfWeek.Saturday:
-                    tbOut.Text = "¡“ú‚Í“y—j“ú‚Å‚·";
-                    break;
-                case DayOfWeek.Sunday:
-                    tbOut.Text = "¡“ú‚Í“ú—j“ú‚Å‚·";
-                    break;
-                case DayOfWeek.Monday:
-                    tbOut.Text = "¡“ú‚ÍŒ—j“ú‚Å‚·";
-                    break;
-                case DayOfWeek.Tuesday:
-                    tbOut.Text = "¡“ú‚Í‰Î—j“ú‚Å‚·";
-                    break;
-                case DayOfWeek.Wednesday:
-                    tbOut.Text = "¡“ú‚Í…—j“ú‚Å‚·";
-                    break;
-                case DayOfWeek.Thursday:
-                    tbOut.Text = "¡“ú‚Í–Ø—j“ú‚Å‚·";
-                    break;
-                case DayOfWeek.Friday:
-                    tbOut.Text = "¡“ú‚Í‹à—j“ú‚Å‚·";
-                    break;
-            }
+            DateTime date = dtpDate.Value;
+            tbOut.Text = date.AddDays((double)nmudDay.Value).ToString();
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e) {
 
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e) {
+
+        }
+
+        private void btBirthCulc_Click_1(object sender, EventArgs e) {
+            DateTime birth = dtpBirth.Value;  //¶‚Ü‚ê‚½“ú•t
+            DateTime today = DateTime.Today; //¡“ú‚Ì“ú•t
+
+            TimeSpan timeSpan = today.Date - birth.Date;
+            tbOut.Text = $"‚ ‚È‚½‚Í{GetAge(birth,today)}Î‚Å‚·";
+            tbOut2.Text = $"¶‚Ü‚ê‚Ä‚©‚ç{timeSpan.Days}“úŒo‰ß";
+        }
+
+        //”N—î‚ğ‹‚ß‚éƒƒ\ƒbƒh
+        static int GetAge(DateTime birthday, DateTime targetDay) {
+            var age = targetDay.Year - birthday.Year;
+            if(targetDay < birthday.AddYears(age)) {
+                age--;
+            }
+            return age;
         }
     }
 }
