@@ -23,8 +23,15 @@ namespace Section01 {
             DateTime today = DateTime.Today; //今日の日付
 
             TimeSpan timeSpan = today.Date - birth.Date;
-            tbOut.Text = $"あなたは{GetAge(birth,today)}歳です";
+            tbOut.Text = $"あなたは{GetAge(birth, today)}歳です";
             tbOut2.Text = $"生まれてから{timeSpan.Days}日経過";
+            tbOut3.Text = $"生まれた{birth.Month}月{birth.Day}日は第{NthWeek(birth)}週の{birth.ToString("dddd")}です";
+        }
+
+        static int NthWeek(DateTime date) {
+            var firstDay = new DateTime(date.Year, date.Month, 1);
+            var firstDayOfWeek = (int)(firstDay.DayOfWeek);
+            return (date.Day + firstDayOfWeek - 1) / 7 + 1;
         }
 
         //年齢を求めるメソッド
@@ -34,6 +41,10 @@ namespace Section01 {
                 age--;
             }
             return age;
+        }
+
+        private void label3_Click(object sender, EventArgs e) {
+
         }
     }
 }

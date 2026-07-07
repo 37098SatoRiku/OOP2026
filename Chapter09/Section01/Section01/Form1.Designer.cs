@@ -32,8 +32,10 @@
             btBirthCulc = new Button();
             label2 = new Label();
             tbOut2 = new TextBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            tbOut3 = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)nmudDay).BeginInit();
             SuspendLayout();
             // 
@@ -80,7 +82,7 @@
             tbOut.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut.Location = new Point(103, 295);
             tbOut.Name = "tbOut";
-            tbOut.Size = new Size(496, 33);
+            tbOut.Size = new Size(304, 33);
             tbOut.TabIndex = 5;
             // 
             // dtpBirth
@@ -116,35 +118,60 @@
             tbOut2.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
             tbOut2.Location = new Point(103, 348);
             tbOut2.Name = "tbOut2";
-            tbOut2.Size = new Size(496, 33);
+            tbOut2.Size = new Size(304, 33);
             tbOut2.TabIndex = 5;
             // 
-            // textBox1
+            // tbOut3
             // 
-            textBox1.Location = new Point(46, 303);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(51, 23);
-            textBox1.TabIndex = 9;
-            textBox1.Text = "年齢";
+            tbOut3.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut3.Location = new Point(103, 405);
+            tbOut3.Multiline = true;
+            tbOut3.Name = "tbOut3";
+            tbOut3.Size = new Size(304, 71);
+            tbOut3.TabIndex = 5;
             // 
-            // textBox2
+            // label3
             // 
-            textBox2.Location = new Point(38, 356);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(59, 23);
-            textBox2.TabIndex = 9;
-            textBox2.Text = "経過日数";
+            label3.AutoSize = true;
+            label3.Location = new Point(73, 416);
+            label3.Name = "label3";
+            label3.Size = new Size(24, 15);
+            label3.TabIndex = 10;
+            label3.Text = "メモ";
+            label3.Click += label3_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(46, 359);
+            label4.Name = "label4";
+            label4.Size = new Size(55, 15);
+            label4.TabIndex = 10;
+            label4.Text = "経過日数";
+            label4.Click += label3_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(70, 306);
+            label5.Name = "label5";
+            label5.Size = new Size(31, 15);
+            label5.TabIndex = 10;
+            label5.Text = "年齢";
+            label5.Click += label3_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(799, 533);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(457, 508);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(btBirthCulc);
             Controls.Add(dtpBirth);
+            Controls.Add(tbOut3);
             Controls.Add(tbOut2);
             Controls.Add(tbOut);
             Controls.Add(label1);
@@ -169,7 +196,9 @@
         private Button btBirthCulc;
         private Label label2;
         private TextBox tbOut2;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox tbOut3;
+        private Label label3;
+        private Label label4;
+        private Label label5;
     }
 }
