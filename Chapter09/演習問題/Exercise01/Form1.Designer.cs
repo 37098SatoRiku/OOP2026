@@ -23,6 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
             btButton1 = new Button();
             btButton2 = new Button();
             btButton3 = new Button();
@@ -32,6 +33,7 @@
             tbOut4 = new TextBox();
             btStart = new Button();
             btStop = new Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // btButton1
@@ -121,6 +123,11 @@
             btStop.UseVisualStyleBackColor = true;
             btStop.Click += btStop_Click;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1;
+            timer1.Tick += timer1_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -152,5 +159,6 @@
         private TextBox tbOut4;
         private Button btStart;
         private Button btStop;
+        private System.Windows.Forms.Timer timer1;
     }
 }

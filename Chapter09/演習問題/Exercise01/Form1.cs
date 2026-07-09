@@ -28,9 +28,14 @@ namespace Exercise01 {
         private void btStart_Click(object sender, EventArgs e) {
             tbOut4.Text = "";
             tw.Start();
+            timer1.Start();
         }
 
         private void btStop_Click(object sender, EventArgs e) {
+            timer1.Stop();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) {
             TimeSpan duration = tw.Stop();
             tbOut4.Text = $"{duration.TotalSeconds:F3}•b";
         }
