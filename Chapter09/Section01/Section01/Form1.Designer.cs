@@ -185,6 +185,7 @@
             dtpBirth2.Name = "dtpBirth2";
             dtpBirth2.Size = new Size(200, 33);
             dtpBirth2.TabIndex = 12;
+            dtpBirth2.ValueChanged += dtpBirth2_ValueChanged_1;
             // 
             // btBirthCulc2
             // 

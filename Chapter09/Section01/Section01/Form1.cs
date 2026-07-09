@@ -58,10 +58,14 @@ namespace Section01 {
         private void btBirthCulc2_Click(object sender, EventArgs e) {
             DateTime day = dtpBirth2.Value;
             DateTime birth = dtpBirth.Value;
-            tbOut4.Text = $"{GetNextBirth(day,birth)}";
+            tbOut4.Text = $"{GetNextBirth(day, birth)}";
         }
 
         private void label4_Click(object sender, EventArgs e) {
+
+        }
+
+        private void dtpBirth2_ValueChanged_1(object sender, EventArgs e) {
 
         }
     }
