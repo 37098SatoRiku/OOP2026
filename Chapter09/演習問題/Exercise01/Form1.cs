@@ -1,9 +1,10 @@
+using System.Diagnostics;
 using System.Drawing.Text;
 using System.Globalization;
 
 namespace Exercise01 {
     public partial class Form1 : Form {
-        TimeWatch tw = new TimeWatch();
+        Stopwatch sw = new Stopwatch();
         public Form1() {
             InitializeComponent();
         }
@@ -26,22 +27,35 @@ namespace Exercise01 {
         }
 
         private void btStart_Click(object sender, EventArgs e) {
-            tbOut4.Text = "";
-            tw.Start();
+            sw.Start();
             timer1.Start();
         }
 
         private void btStop_Click(object sender, EventArgs e) {
+            sw.Stop();
             timer1.Stop();
+            tbOut4.Text = $"{sw.Elapsed}";
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            TimeSpan duration = tw.Stop();
-            tbOut4.Text = $"{duration.TotalSeconds:F3}•b";
+            tbOut4.Text = $"{sw.Elapsed}";
+        }
+
+        private void btReset_Click(object sender, EventArgs e) {
+            sw.Reset();
+            tbOut4.Text = $"{sw.Elapsed}";
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            listBox1.Items.Insert(0, tbOut4.Text);
         }
     }
 
-    internal class TimeWatch {
+    /*internal class TimeWatch {
         private DateTime _time;
 
         public void Start() {
@@ -51,5 +65,5 @@ namespace Exercise01 {
         public TimeSpan Stop() {
             return DateTime.Now - _time;
         }
-    }
+    }*/
 }

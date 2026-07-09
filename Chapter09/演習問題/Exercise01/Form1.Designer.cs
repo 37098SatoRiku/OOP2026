@@ -34,6 +34,9 @@
             btStart = new Button();
             btStop = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            btReset = new Button();
+            button1 = new Button();
+            listBox1 = new ListBox();
             SuspendLayout();
             // 
             // btButton1
@@ -95,16 +98,16 @@
             // 
             // tbOut4
             // 
-            tbOut4.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            tbOut4.Location = new Point(183, 321);
+            tbOut4.Font = new Font("Yu Gothic UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut4.Location = new Point(12, 370);
             tbOut4.Name = "tbOut4";
-            tbOut4.Size = new Size(335, 33);
+            tbOut4.Size = new Size(425, 71);
             tbOut4.TabIndex = 1;
             // 
             // btStart
             // 
             btStart.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btStart.Location = new Point(199, 378);
+            btStart.Location = new Point(12, 478);
             btStart.Name = "btStart";
             btStart.Size = new Size(128, 60);
             btStart.TabIndex = 0;
@@ -115,7 +118,7 @@
             // btStop
             // 
             btStop.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btStop.Location = new Point(363, 378);
+            btStop.Location = new Point(146, 478);
             btStop.Name = "btStop";
             btStop.Size = new Size(128, 60);
             btStop.TabIndex = 0;
@@ -128,11 +131,47 @@
             timer1.Interval = 1;
             timer1.Tick += timer1_Tick;
             // 
+            // btReset
+            // 
+            btReset.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btReset.Location = new Point(280, 479);
+            btReset.Name = "btReset";
+            btReset.Size = new Size(132, 59);
+            btReset.TabIndex = 2;
+            btReset.Text = "リセット";
+            btReset.UseVisualStyleBackColor = true;
+            btReset.Click += btReset_Click;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            button1.Location = new Point(418, 478);
+            button1.Name = "button1";
+            button1.Size = new Size(127, 59);
+            button1.TabIndex = 3;
+            button1.Text = "ラップタイム";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.Font = new Font("Yu Gothic UI", 36F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 65;
+            listBox1.Location = new Point(443, 370);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(473, 69);
+            listBox1.TabIndex = 4;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1611, 1044);
+            Controls.Add(listBox1);
+            Controls.Add(button1);
+            Controls.Add(btReset);
             Controls.Add(tbOut4);
             Controls.Add(tbOut3);
             Controls.Add(tbOut2);
@@ -160,5 +199,8 @@
         private Button btStart;
         private Button btStop;
         private System.Windows.Forms.Timer timer1;
+        private Button btReset;
+        private Button button1;
+        private ListBox listBox1;
     }
 }
