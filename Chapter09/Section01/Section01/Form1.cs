@@ -43,7 +43,25 @@ namespace Section01 {
             return age;
         }
 
-        private void label3_Click(object sender, EventArgs e) {
+        static int GetNextBirth(DateTime day, DateTime birth) {
+            var nextbirthday = new DateTime(day.Year, birth.Month, birth.Day);
+            if(nextbirthday < day.Date) {
+                nextbirthday = nextbirthday.AddYears(1);
+            }
+            return (nextbirthday - day.Date).Days;
+        }
+
+        private void dtpBirth2_ValueChanged(object sender, EventArgs e) {
+
+        }
+
+        private void btBirthCulc2_Click(object sender, EventArgs e) {
+            DateTime day = dtpBirth2.Value;
+            DateTime birth = dtpBirth.Value;
+            tbOut4.Text = $"{GetNextBirth(day,birth)}";
+        }
+
+        private void label4_Click(object sender, EventArgs e) {
 
         }
     }

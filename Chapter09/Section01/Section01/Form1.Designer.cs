@@ -36,6 +36,11 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            tbOut4 = new TextBox();
+            label6 = new Label();
+            dtpBirth2 = new DateTimePicker();
+            btBirthCulc2 = new Button();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)nmudDay).BeginInit();
             SuspendLayout();
             // 
@@ -88,7 +93,7 @@
             // dtpBirth
             // 
             dtpBirth.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            dtpBirth.Location = new Point(55, 245);
+            dtpBirth.Location = new Point(52, 245);
             dtpBirth.Name = "dtpBirth";
             dtpBirth.Size = new Size(200, 33);
             dtpBirth.TabIndex = 6;
@@ -132,13 +137,10 @@
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(73, 416);
+            label3.Location = new Point(0, 0);
             label3.Name = "label3";
-            label3.Size = new Size(24, 15);
-            label3.TabIndex = 10;
-            label3.Text = "メモ";
-            label3.Click += label3_Click;
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 11;
             // 
             // label4
             // 
@@ -148,7 +150,7 @@
             label4.Size = new Size(55, 15);
             label4.TabIndex = 10;
             label4.Text = "経過日数";
-            label4.Click += label3_Click;
+            label4.Click += label4_Click;
             // 
             // label5
             // 
@@ -158,20 +160,69 @@
             label5.Size = new Size(31, 15);
             label5.TabIndex = 10;
             label5.Text = "年齢";
-            label5.Click += label3_Click;
+            // 
+            // tbOut4
+            // 
+            tbOut4.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut4.Location = new Point(103, 544);
+            tbOut4.Name = "tbOut4";
+            tbOut4.Size = new Size(304, 33);
+            tbOut4.TabIndex = 5;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(0, 555);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 15);
+            label6.TabIndex = 10;
+            label6.Text = "誕生日までの日数";
+            // 
+            // dtpBirth2
+            // 
+            dtpBirth2.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            dtpBirth2.Location = new Point(52, 503);
+            dtpBirth2.Name = "dtpBirth2";
+            dtpBirth2.Size = new Size(200, 33);
+            dtpBirth2.TabIndex = 12;
+            // 
+            // btBirthCulc2
+            // 
+            btBirthCulc2.Location = new Point(309, 503);
+            btBirthCulc2.Name = "btBirthCulc2";
+            btBirthCulc2.Size = new Size(71, 35);
+            btBirthCulc2.TabIndex = 13;
+            btBirthCulc2.Text = "計算";
+            btBirthCulc2.UseVisualStyleBackColor = true;
+            btBirthCulc2.Click += btBirthCulc2_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(52, 485);
+            label7.Name = "label7";
+            label7.Size = new Size(83, 15);
+            label7.TabIndex = 10;
+            label7.Text = "誕生日を求める";
+            label7.Click += label4_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(457, 508);
+            ClientSize = new Size(477, 612);
+            Controls.Add(btBirthCulc2);
+            Controls.Add(dtpBirth2);
             Controls.Add(label5);
+            Controls.Add(label7);
             Controls.Add(label4);
+            Controls.Add(label6);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(btBirthCulc);
             Controls.Add(dtpBirth);
             Controls.Add(tbOut3);
+            Controls.Add(tbOut4);
             Controls.Add(tbOut2);
             Controls.Add(tbOut);
             Controls.Add(label1);
@@ -200,5 +251,10 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private TextBox tbOut4;
+        private Label label6;
+        private DateTimePicker dtpBirth2;
+        private Button btBirthCulc2;
+        private Label label7;
     }
 }
