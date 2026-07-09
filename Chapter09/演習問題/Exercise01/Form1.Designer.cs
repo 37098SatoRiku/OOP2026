@@ -29,6 +29,9 @@
             tbOut1 = new TextBox();
             tbOut2 = new TextBox();
             tbOut3 = new TextBox();
+            tbOut4 = new TextBox();
+            btStart = new Button();
+            btStop = new Button();
             SuspendLayout();
             // 
             // btButton1
@@ -88,14 +91,47 @@
             tbOut3.Size = new Size(308, 33);
             tbOut3.TabIndex = 1;
             // 
+            // tbOut4
+            // 
+            tbOut4.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut4.Location = new Point(183, 321);
+            tbOut4.Name = "tbOut4";
+            tbOut4.Size = new Size(335, 33);
+            tbOut4.TabIndex = 1;
+            // 
+            // btStart
+            // 
+            btStart.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btStart.Location = new Point(199, 378);
+            btStart.Name = "btStart";
+            btStart.Size = new Size(128, 60);
+            btStart.TabIndex = 0;
+            btStart.Text = "スタート";
+            btStart.UseVisualStyleBackColor = true;
+            btStart.Click += btStart_Click;
+            // 
+            // btStop
+            // 
+            btStop.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btStop.Location = new Point(363, 378);
+            btStop.Name = "btStop";
+            btStop.Size = new Size(128, 60);
+            btStop.TabIndex = 0;
+            btStop.Text = "ストップ";
+            btStop.UseVisualStyleBackColor = true;
+            btStop.Click += btStop_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(tbOut4);
             Controls.Add(tbOut3);
             Controls.Add(tbOut2);
             Controls.Add(tbOut1);
+            Controls.Add(btStart);
+            Controls.Add(btStop);
             Controls.Add(btButton3);
             Controls.Add(btButton2);
             Controls.Add(btButton1);
@@ -113,5 +149,8 @@
         private TextBox tbOut1;
         private TextBox tbOut2;
         private TextBox tbOut3;
+        private TextBox tbOut4;
+        private Button btStart;
+        private Button btStop;
     }
 }
