@@ -26,11 +26,15 @@ namespace CarReportSystem {
             var carReport = new CarReport {
                 Date = dtpDate.Value,
                 Author = cbAuthor.Text,
-                Meker = GetRadioButtonMaker(),
+                Maker = GetRadioButtonMaker(),
                 CarName = cbCarName.Text,
                 Report = tbReport.Text,
                 Picture = pbPicture.Image,
             };
+
+            SetCbAuthor(cbAuthor.Text);
+            SetCbCarName(cbCarName.Text);
+
             listCarReports.Add(carReport);
 
             ImputItemsAllClear();   //入力項目の全クリア
@@ -71,6 +75,9 @@ namespace CarReportSystem {
         }
 
         private void dgvRecords_Click(object sender, EventArgs e) {
+            if(dgvRecords.CurrentRow is null) {
+                return;
+            }
             dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
             cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
             SetRadioButtonMaker((MakerGroup)dgvRecords.CurrentRow.Cells["Maker"].Value);
@@ -101,6 +108,20 @@ namespace CarReportSystem {
                     rbOther.Checked = true;
                     break;
             }
+        }
+        //記録者の入力履歴をコンボボックスを登録(重複なし)
+        private void SetCbAuthor(string author) {
+            if(cbAuthor.Items.Contains(author)){
+                return;
+            }
+            cbAuthor.Items.Add(author);
+        }
+
+        private void SetCbCarName(string carname) {
+            if(cbCarName.Items.Contains(carname)) {
+                return;
+            }
+            cbCarName.Items.Add(carname);
         }
     }
 }
