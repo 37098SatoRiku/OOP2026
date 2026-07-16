@@ -53,6 +53,10 @@ namespace Exercise01 {
         private void button1_Click(object sender, EventArgs e) {
             listBox1.Items.Insert(0, tbOut4.Text);
         }
+
+        private void tbOut4_TextChanged(object sender, EventArgs e) {
+
+        }
     }
 
     /*internal class TimeWatch {

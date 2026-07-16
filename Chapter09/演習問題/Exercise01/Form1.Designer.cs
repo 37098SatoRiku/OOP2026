@@ -103,6 +103,7 @@
             tbOut4.Name = "tbOut4";
             tbOut4.Size = new Size(425, 71);
             tbOut4.TabIndex = 1;
+            tbOut4.TextChanged += tbOut4_TextChanged;
             // 
             // btStart
             // 
