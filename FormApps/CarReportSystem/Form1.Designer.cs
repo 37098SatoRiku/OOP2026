@@ -63,6 +63,8 @@
             tsslbMessage = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
             cdColor = new ColorDialog();
+            sfdReportFileSave = new SaveFileDialog();
+            ofdReportFileSave = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -381,6 +383,7 @@
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
             保存ToolStripMenuItem.Size = new Size(180, 22);
             保存ToolStripMenuItem.Text = "保存...";
+            保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
@@ -438,6 +441,10 @@
             statusStrip1.SizingGrip = false;
             statusStrip1.TabIndex = 11;
             statusStrip1.Text = "statusStrip1";
+            // 
+            // ofdReportFileSave
+            // 
+            ofdReportFileSave.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -527,5 +534,7 @@
         private ToolStripStatusLabel tsslbMessage;
         private StatusStrip statusStrip1;
         private ColorDialog cdColor;
+        private SaveFileDialog sfdReportFileSave;
+        private OpenFileDialog ofdReportFileSave;
     }
 }

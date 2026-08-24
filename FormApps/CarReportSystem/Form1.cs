@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
@@ -24,12 +25,11 @@ namespace CarReportSystem {
                     //P286以降を参考にする(ファイル名:setting.xml)
                     using(var reader = XmlReader.Create("setting.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        var settings = (Settings)serializer.Deserialize(reader);
+                        settings = (Settings)serializer.Deserialize(reader) as Settings;
                         //背景色設定
                         BackColor = Color.FromArgb(settings.MainFormBackColor);
                     }
-                }
-                catch(Exception ex) {
+                } catch(Exception ex) {
                     tsslbMessage.Text = "設定ファイル読み込みエラー";
                     MessageBox.Show(ex.Message); //←より具体的なエラーを出力
                 }
@@ -221,6 +221,30 @@ namespace CarReportSystem {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
             }
+        }
+
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
+            reportSaveFile();
+        }
+
+        //ファイルセーブ処理
+        private void reportSaveFile() {
+            if(sfdReportFileSave.ShowDialog() == DialogResult.OK) {
+                try {
+                    //バイナリ形式でシリアル化
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+                } catch(Exception ex) {
+                    tsslbMessage.Text = "ファイル書き出しエラー";
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        //ファイルオープン処理
+        private void reportOpenFile() {
+
         }
     }
 }
