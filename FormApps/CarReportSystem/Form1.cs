@@ -264,6 +264,8 @@ namespace CarReportSystem {
                         listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvRecords.DataSource = listCarReports;
                     }
+                    cbAuthor.Items.Clear();
+                    cbCarName.Items.Clear();
                     foreach(var item in listCarReports) {
                         SetCbAuthor(item.Author);
                         SetCbCarName(item.CarName);
