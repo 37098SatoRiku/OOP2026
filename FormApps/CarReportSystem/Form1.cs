@@ -24,14 +24,18 @@ namespace CarReportSystem {
                     //P286以降を参考にする(ファイル名:setting.xml)
                     using(var reader = XmlReader.Create("setting.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        settings = (Settings)serializer.Deserialize(reader) as Settings;
-                        //背景色設定
-                        BackColor = Color.FromArgb(settings.MainFormBackColor);
+                        if(serializer.Deserialize(reader) is Settings loadedSettings) {
+                            settings = loadedSettings;
+                            //背景色設定
+                            BackColor = Color.FromArgb(settings.MainFormBackColor);
+                        }
                     }
                 } catch(Exception ex) {
                     tsslbMessage.Text = "設定ファイル読み込みエラー";
                     MessageBox.Show(ex.Message); //←より具体的なエラーを出力
                 }
+            } else {
+                tsslbMessage.Text = "設定ファイルがありません";
             }
         }
 
