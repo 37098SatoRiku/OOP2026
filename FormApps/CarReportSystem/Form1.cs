@@ -152,7 +152,7 @@ namespace CarReportSystem {
         }
         //データグリッドビューを更新したら呼ぶメソッド
         private void InputItemsUpdate() {
-            if(!(dgvRecords.CurrentRow?.Selected ?? false)) {
+            if(dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
                 InputItemsAllClear();
             }
         }
