@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using System.Drawing;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.Serialization;
@@ -264,8 +263,11 @@ namespace CarReportSystem {
                         listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvRecords.DataSource = listCarReports;
                     }
+                    //コンボボックスの履歴をすべて消す
                     cbAuthor.Items.Clear();
                     cbCarName.Items.Clear();
+
+                    //コンボボックスの履歴を再登録
                     foreach(var item in listCarReports) {
                         SetCbAuthor(item.Author);
                         SetCbCarName(item.CarName);
