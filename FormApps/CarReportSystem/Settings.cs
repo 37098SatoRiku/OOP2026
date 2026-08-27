@@ -22,6 +22,7 @@ namespace CarReportSystem {
         private Settings() {
         }
 
+        //設定ファイルからアップロード
         public void Load() {
             if(!File.Exists(FileName)) {
                 return;
@@ -34,6 +35,7 @@ namespace CarReportSystem {
             }
         }
 
+        //設定ファイルを保存
         public void Save() {
             var data = new SettingsData {
                 MainFormBackColor = MainFormBackColor
@@ -47,6 +49,5 @@ namespace CarReportSystem {
         public class SettingsData {
             public int MainFormBackColor { get; set; }
         }
-
     }
 }

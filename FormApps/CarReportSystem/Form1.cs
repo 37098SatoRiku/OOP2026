@@ -19,7 +19,15 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            if(File.Exists("setting.xml")) {
+            try {
+                Settings.instance.Load();
+                BackColor = Color.FromArgb(Settings.instance.MainFormBackColor);
+            } catch(Exception ex) {
+                tsslbMessage.Text = "設定ファイル読み込みエラー";
+                MessageBox.Show(ex.Message); //←より具体的なエラーを出力
+            }
+
+            /*if(File.Exists("setting.xml")) {
                 try {
                     //P286以降を参考にする(ファイル名:setting.xml)
                     using(var reader = XmlReader.Create("setting.xml")) {
@@ -27,7 +35,7 @@ namespace CarReportSystem {
                         if(serializer.Deserialize(reader) is Settings loadedSettings) {
                             settings = loadedSettings;
                             //背景色設定
-                            BackColor = Color.FromArgb(Settings.instance.MainFormBackColor);
+                            BackColor = Color.FromArgb(settings.MainFormBackColor);
                         }
                     }
                 } catch(Exception ex) {
@@ -36,7 +44,8 @@ namespace CarReportSystem {
                 }
             } else {
                 tsslbMessage.Text = "設定ファイルがありません";
-            }
+            }*/
+
         }
 
         //追加ボタンイベントハンドラ
@@ -228,11 +237,12 @@ namespace CarReportSystem {
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルへ色情報を保存する処理（シリアル化）
             //P284以降を参考にする（ファイル名：setting.xml）
+            Settings.instance.Save();
 
-            using(var writer = XmlWriter.Create("setting.xml")) {
-                var serializer = new XmlSerializer(Settings.instance.GetType());
-                serializer.Serialize(writer, Settings.instance);
-            }
+            /*using(var writer = XmlWriter.Create("setting.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(writer, settings);
+            }*/
         }
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
