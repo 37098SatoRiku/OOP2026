@@ -3,6 +3,7 @@ using System.Diagnostics;
 
 namespace SQLiteProductSample;
 
+//商品1件分のデータを表すクラス
 public class Product
 {
     //商品ID(自動採番)
