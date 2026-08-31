@@ -164,7 +164,7 @@ namespace CarReportSystem {
                 return;
             }
             listCarReports.Remove(carReport);
-            
+
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
         //データグリッドビューを更新したら呼ぶメソッド
