@@ -1,19 +1,14 @@
 namespace SQLiteProductSample;
 
-internal static class Program
-{
+internal static class Program {
     [STAThread]
-    static void Main()
-    {
+    static void Main() {
         ApplicationConfiguration.Initialize();
 
-        try
-        {
+        try {
             Database.Initialize();
             Application.Run(new Form1());
-        }
-        catch (Exception ex)
-        {
+        } catch(Exception ex) {
             MessageBox.Show(
                 $"アプリケーションの起動に失敗しました。\n\n{ex.Message}",
                 "起動エラー",

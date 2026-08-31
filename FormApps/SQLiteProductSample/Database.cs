@@ -3,13 +3,12 @@ using Microsoft.Data.Sqlite;
 namespace SQLiteProductSample;
 
 //SQLiteデータベースへの接続と初期化を担当するクラス
-public static class Database
-{
+public static class Database {
     //DBファイルの保存場所
-    private static readonly string DatabasePath = Path.Combine(AppContext.BaseDirectory, "products.do");
+    private static readonly string DatabasePath = Path.Combine(AppContext.BaseDirectory, "products.db");
 
     //SQLiteへ接続するための接続文字列
-    private static readonly string ConnectionString = $"Data Sourse = {DatabasePath}";
+    private static readonly string ConnectionString = $"Data Source = {DatabasePath}";
 
     //DBファイルの保存場所は外部から確認するための読み取り専用プロパティ
     public static string FilePath => DatabasePath;
