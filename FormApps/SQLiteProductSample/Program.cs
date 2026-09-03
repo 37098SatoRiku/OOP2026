@@ -13,7 +13,7 @@ internal static class Program {
                 $"アプリケーションの起動に失敗しました。\n\n{ex.Message}",
                 "起動エラー",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                MessageBoxIcon.Error); 
         }
     }
 }
