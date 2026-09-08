@@ -75,6 +75,7 @@ namespace CarReportSystem {
             command.Parameters.AddWithValue("$picture", (object?)ImageToBytes(picture) ?? DBNull.Value);
 
             var result = command.ExecuteScalar();
+
             if(result is null) {
                 throw new InvalidOperationException("登録した商品のIDを取得できませんでした。");
             }

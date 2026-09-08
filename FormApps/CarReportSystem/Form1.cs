@@ -23,6 +23,8 @@ namespace CarReportSystem {
                 BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
                 var repository = new CarReportRepository();
                 foreach(var report in repository.GetAll()) {
+                    SetCbAuthor(report.Author);
+                    SetCbCarName(report.CarName);
                     listCarReports.Add(report);
                 }
             } catch(Exception ex) {
