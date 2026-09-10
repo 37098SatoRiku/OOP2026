@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -14,7 +15,7 @@ namespace CarReportSystem {
         private static byte[]? ImageToBytes(Image? image) {
             if(image is null) return null;
             using var stream = new MemoryStream();
-            image.Save(stream, image.RawFormat);
+            image.Save(stream, ImageFormat.Png);
             return stream.ToArray();
         }
 
