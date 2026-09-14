@@ -54,7 +54,7 @@ namespace CarReportSystem {
         }
 
 
-        public int Add(DateTime date, string author, CarReport.MakerGroup maker, string carName, string report, Image? picture) {
+        public int Add(CarReport carReport) {
             using var connection = Database.GetConnection();
             connection.Open();
             using var command = connection.CreateCommand();
@@ -68,12 +68,12 @@ namespace CarReportSystem {
                 SELECT last_insert_rowid();
                 """;
 
-            command.Parameters.AddWithValue("$date", date.ToString("yyyy-MM-dd"));
-            command.Parameters.AddWithValue("$author", author);
-            command.Parameters.AddWithValue("$maker", (int)maker);
-            command.Parameters.AddWithValue("$carName", carName);
-            command.Parameters.AddWithValue("$report", report);
-            command.Parameters.AddWithValue("$picture", (object?)ImageToBytes(picture) ?? DBNull.Value);
+            command.Parameters.AddWithValue("$date", carReport.Date.ToString("yyyy-MM-dd"));
+            command.Parameters.AddWithValue("$author", carReport.Author);
+            command.Parameters.AddWithValue("$maker", (int)carReport.Maker);
+            command.Parameters.AddWithValue("$carName", carReport.CarName);
+            command.Parameters.AddWithValue("$report", carReport.Report);
+            command.Parameters.AddWithValue("$picture", (object?)ImageToBytes(carReport.Picture) ?? DBNull.Value);
 
             var result = command.ExecuteScalar();
 

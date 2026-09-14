@@ -7,25 +7,27 @@ namespace CarReportSystem {
     public partial class Form1 : Form {
 
         //カーレポート管理用リスト
-        BindingList<CarReport> listCarReports = new BindingList<CarReport>();
+        private readonly BindingList<CarReport> _carreports = new ();
+
+        //DB操作を担当するRepository
+        private readonly CarReportRepository _repository = new();
 
         //設定クラスのオブジェクトを生成
         //Settings settings = Settings.instance;
 
         public Form1() {
             InitializeComponent();
-            dgvRecords.DataSource = listCarReports;
+            dgvRecords.DataSource = _carreports;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
             try {
                 Settings.Instance.Load();
                 BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
-                var repository = new CarReportRepository();
-                foreach(var report in repository.GetAll()) {
+                foreach(var report in _repository.GetAll()) {
                     SetCbAuthor(report.Author);
                     SetCbCarName(report.CarName);
-                    listCarReports.Add(report);
+                    _carreports.Add(report);
                 }
             } catch(Exception ex) {
                 tsslbMessage.Text = "設定ファイル読み込みエラー";
@@ -74,22 +76,15 @@ namespace CarReportSystem {
                 Picture = pbPicture.Image,
             };
 
-            var repository = new CarReportRepository();
 
-            carReport.Id = repository.Add(
-            carReport.Date,
-            carReport.Author,
-            carReport.Maker,
-            carReport.CarName,
-            carReport.Report,
-            carReport.Picture
-            );
+            _repository.Add(carReport);//データベースへ書き出し
+            ReloadCarReports();　　　　//データベースからすべてデータを読み出し
 
-            listCarReports.Add(carReport);
+            //_carreports.Add(carReport);
 
-            //入力履歴を登録
+            /*入力履歴を登録
             SetCbAuthor(cbAuthor.Text.Trim());
-            SetCbCarName(cbCarName.Text.Trim());
+            SetCbCarName(cbCarName.Text.Trim());*/
 
             dgvRecords.ClearSelection(); //セルの選択を解除する
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
@@ -181,9 +176,8 @@ namespace CarReportSystem {
                 return;
             }
 
-            var repository = new CarReportRepository();
-            repository.Delete(carReport.Id);
-            listCarReports.Remove(carReport);
+            _repository.Delete(carReport.Id);
+            _carreports.Remove(carReport);
 
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
@@ -193,6 +187,20 @@ namespace CarReportSystem {
             if(dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected) {
                 InputItemsAllClear();
             }
+        }
+
+        //SQLiteから全レポートを読み直す
+        private void ReloadCarReports() {
+            _carreports.Clear();
+            cbAuthor.Items.Clear();  //コンボボックスの履歴を削除
+            cbCarName.Items.Clear(); //コンボボックスの履歴を削除
+            foreach(var carReport in _repository.GetAll()) {
+                _carreports.Add(carReport);
+
+                SetCbAuthor(carReport.Author);　//コンボボックスに履歴を登録
+                SetCbCarName(carReport.CarName);
+            }
+            dgvRecords.ClearSelection();
         }
 
         private void btModifyRecord_Click(object sender, EventArgs e) {
@@ -224,8 +232,7 @@ namespace CarReportSystem {
             SetCbAuthor(cbAuthor.Text.Trim());
             SetCbCarName(cbCarName.Text.Trim());
 
-            var repository = new CarReportRepository();
-            repository.Update(carReport);
+            _repository.Update(carReport);
             dgvRecords.Refresh();   //データグリッドビューの更新
 
             tsslbMessage.Text = "レポートを修正しました";
