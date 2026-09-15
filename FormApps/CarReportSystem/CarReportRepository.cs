@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Drawing.Imaging;
-using System.Globalization;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Drawing.Imaging;
 
 namespace CarReportSystem {
     public class CarReportRepository {
@@ -78,7 +69,7 @@ namespace CarReportSystem {
             var result = command.ExecuteScalar();
 
             if(result is null) {
-                throw new InvalidOperationException("登録した商品のIDを取得できませんでした。");
+                throw new InvalidOperationException("登録したレポートのIDを取得できませんでした。");
             }
             return Convert.ToInt32((long)result);
         }

@@ -6,9 +6,6 @@ namespace CarReportSystem {
 
         private const string FileName = "setting.xml";
 
-        //唯一のSettingオブジェクト
-        private static readonly Settings _instance = new Settings();
-
         //メイン画面に設定した色情報
         public int MainFormBackColor { get; set; }
          = SystemColors.Control.ToArgb();

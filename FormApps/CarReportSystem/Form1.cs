@@ -1,13 +1,12 @@
+using System;
 using System.ComponentModel;
-using System.Xml;
-using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
         //カーレポート管理用リスト
-        private readonly BindingList<CarReport> _carreports = new ();
+        private readonly BindingList<CarReport> _carreports = new();
 
         //DB操作を担当するRepository
         private readonly CarReportRepository _repository = new();
@@ -177,7 +176,7 @@ namespace CarReportSystem {
             }
 
             _repository.Delete(carReport.Id);
-            _carreports.Remove(carReport);
+            ReloadCarReports();
 
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
@@ -275,6 +274,12 @@ namespace CarReportSystem {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(writer, settings);
             }*/
+        }
+
+        private void このアプリについてToolStripMenuItem_Click(object sender, EventArgs e) {
+            MessageBox.Show($"CarReportSystem\n\n" ,$"バージョン: 1.0.0\n",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
         }
     }
 }

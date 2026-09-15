@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace CarReportSystem {
+﻿namespace CarReportSystem {
     public class CarReport {
         //列挙型
         public enum MakerGroup {

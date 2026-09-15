@@ -372,6 +372,16 @@
             ファイルAToolStripMenuItem.Size = new Size(67, 20);
             ファイルAToolStripMenuItem.Text = "ファイル(&F)";
             // 
+            // 開くToolStripMenuItem
+            // 
+            開くToolStripMenuItem.Name = "開くToolStripMenuItem";
+            開くToolStripMenuItem.Size = new Size(155, 22);
+            // 
+            // 保存ToolStripMenuItem
+            // 
+            保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
+            保存ToolStripMenuItem.Size = new Size(155, 22);
+            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
@@ -407,8 +417,9 @@
             // このアプリについてToolStripMenuItem
             // 
             このアプリについてToolStripMenuItem.Name = "このアプリについてToolStripMenuItem";
-            このアプリについてToolStripMenuItem.Size = new Size(164, 22);
+            このアプリについてToolStripMenuItem.Size = new Size(180, 22);
             このアプリについてToolStripMenuItem.Text = "このアプリについて...";
+            このアプリについてToolStripMenuItem.Click += このアプリについてToolStripMenuItem_Click;
             // 
             // ofdPicFileOpen
             // 
