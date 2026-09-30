@@ -1,0 +1,14 @@
+﻿using Microsoft.AspNetCore.Mvc;  //ControllerとIActionResultを使用
+
+namespace MvcBasicSample.Controllers;
+
+//URLのHelloに対応する要求を受け取るController
+public class HelloController : Controller {
+
+    // ../Hello/Indexで呼び出されるAction
+    public IActionResult Index() {
+        //Viewを使用せず文字列をHTTPの応答として返す
+        //return Content("はじめてのASP.NET Core");
+        return View();
+    }
+}
