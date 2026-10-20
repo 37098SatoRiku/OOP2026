@@ -4,18 +4,31 @@
         Title="MainWindow"
         Height="450"
         Width="800">
+
     <Grid>
-        <StackPanel>
-            <Button Content="ファイル選択"
-                      Click="Button_Click"/>
-            <TextBox x:Name="TextArea"
-                     TextWrapping="Wrap"
-                     Height="1000"
-                     AcceptsReturn="True"
-                     VerticalScrollBarVisibility="Auto"
-                     HorizontalScrollBarVisibility="Auto"
-                     FontSize="14"
-                     IsReadOnly="True"/>
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        
+        <Button     Grid.Row="0" Grid.Column="0"
+                  Content="ファイル選択"
+                  Click="Button_Click"/>
+        <TextBox Grid.Row="1"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2"
+                 x:Name="TextArea"
+                 TextWrapping="Wrap"
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"
+                 FontFamily="Consolas"
+                 FontSize="14"
+                 IsReadOnly="True"/>
     </Grid>
 </Window>
