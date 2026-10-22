@@ -163,6 +163,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextFileProcessor", "..\Cha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfOrderSystem", "..\AppNetCoreMVC\SelfOrderSystem\SelfOrderSystem.csproj", "{0B383951-D4F0-D7F1-1345-3829E923E982}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProgram", "FileProgram\FileProgram.csproj", "{C31EB5EA-F0F7-4094-9457-3831D542B26A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -361,6 +363,10 @@ Global
 		{0B383951-D4F0-D7F1-1345-3829E923E982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B383951-D4F0-D7F1-1345-3829E923E982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B383951-D4F0-D7F1-1345-3829E923E982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C31EB5EA-F0F7-4094-9457-3831D542B26A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C31EB5EA-F0F7-4094-9457-3831D542B26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C31EB5EA-F0F7-4094-9457-3831D542B26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C31EB5EA-F0F7-4094-9457-3831D542B26A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -431,6 +437,7 @@ Global
 		{B8BDC659-9719-47CA-AB92-7458B3F5CEA7} = {B73F5414-BC84-4FDE-8A11-A20C3FE1FB7D}
 		{8A10DCAA-03E0-2814-7C2D-37BB67D61E3B} = {B73F5414-BC84-4FDE-8A11-A20C3FE1FB7D}
 		{0B383951-D4F0-D7F1-1345-3829E923E982} = {4DCDE3ED-CFE4-4EE7-B29D-318D84C11850}
+		{C31EB5EA-F0F7-4094-9457-3831D542B26A} = {B73F5414-BC84-4FDE-8A11-A20C3FE1FB7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D607AF8-486B-4078-B513-E4267A42E05F}
