@@ -1,0 +1,17 @@
+﻿using System.Net.Http.Headers;
+
+namespace DistanceConverter;
+public class ConverterFactory {
+    //あらかじめインスタンスを生成し、配列に入れておく
+    private readonly static ConverterBase[] _converters = {
+        new MeterConverter(),
+        new FeetConverter(),
+        new InchConverter(),
+        new YardConverter(),
+        new MileConverter(),
+        new KilometerConverter()
+    };
+
+    public static ConverterBase? GetInstance(string name) => _converters.FirstOrDefault(x => x.IsMyUnit(name));
+}
+
