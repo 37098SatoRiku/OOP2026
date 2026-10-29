@@ -9,7 +9,9 @@
             _servise.Initialize(fileName);
             var lines = File.ReadLines(fileName);
             foreach(var line in lines) {
-                _servise.Execute(line);
+                if(_servise.Execute(line)) {
+                    break;
+                }
             }
             _servise.Terminate();
         }

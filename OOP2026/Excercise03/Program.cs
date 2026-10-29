@@ -2,4 +2,4 @@
 
 var service = new Take20Processor();
 var processor = new TextFileProcessor(service);
-processor.Run("枕草子.txt");
+processor.Run("吾輩は猫である.txt");
