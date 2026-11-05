@@ -1,5 +1,5 @@
 ﻿
-namespace Exercise01  {
+namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
             var songs = new List<Song>();
@@ -7,7 +7,7 @@ namespace Exercise01  {
             while(true) {
                 Console.Write("曲名:");
                 var title = Console.ReadLine();
-                if(string.Compare(title, "END", ignoreCase:true) == 0) {
+                if(string.Compare(title, "END", ignoreCase: true) == 0) {
                     Console.WriteLine("");
                     break;
                 }
