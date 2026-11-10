@@ -12,7 +12,7 @@ namespace Exercise01  {
                     break;
                 }
                 Console.Write("アーティスト名:");
-                var artistname = Console.ReadLine();
+                var artistname = Console.ReadLine(); 
                 Console.Write("演奏時間(秒):");
                 int length = int.Parse(Console.ReadLine());
                 songs.Add(new Song(title, artistname, length));
