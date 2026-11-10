@@ -5,7 +5,7 @@ namespace Exercise01  {
             var songs = new List<Song>();
             Console.WriteLine("*****曲の登録*****");
             while(true) {
-                Console.Write("曲名:");
+                Console.Write("曲名:"); 
                 var title = Console.ReadLine();
                 if(string.Compare(title, "END", ignoreCase:true) == 0) {
                     Console.WriteLine("");
