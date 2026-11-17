@@ -1,34 +1,46 @@
 using Microsoft.EntityFrameworkCore;
 using SelfOrderSystem.Data;
 using SelfOrderSystem.Services;
+using SelfOrderSystem.Hubs; // Hub の名前空間
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//追加
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// 追加
+builder.Services.AddDbContext<AppDbContext>(
+        options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    );
 /////////
 
-builder.Services.AddDistributedMemoryCache();                    // Sessionの保存領域としてアプリのメモリを使う
-builder.Services.AddSession(options => {                         // Session機能を登録 
-    options.IdleTimeout = TimeSpan.FromHours(2);                 // 2時間操作がなければ期限切れ 
-    options.Cookie.HttpOnly = true;                              // JavaScriptからSession IDを読めないようにする
-    options.Cookie.IsEssential = true;                           // Session ID用Cookieを必須Cookieとして扱う
+builder.Services.AddDistributedMemoryCache(); // Session の保存領域としてアプリのメモリを使う
+builder.Services.AddSession(options => // Session 機能を登録 
+{
+    options.IdleTimeout = TimeSpan.FromHours(2);    // 2 時間操作がなければ期限切れ
+    options.Cookie.HttpOnly = true;                 // JavaScript からSession ID を読めないようにする
+    options.Cookie.IsEssential = true;              // Session ID 用Cookie を必須Cookie として扱う
 });
+builder.Services.AddHttpContextAccessor(); // Controller 以外のクラスからHttpContext を取得できるようにする
+builder.Services.AddScoped<CartService>(); // CartService をDI へ登録しControllerで受け取れるようにする
 
-builder.Services.AddHttpContextAccessor();                       // Controller以外のクラスからHttpContextを取得できるようにする
-builder.Services.AddScoped<CartService>();                       // CartServiceをDIへ登録しControllerで受け取れるようにする
 
+// builder.Services.AddScoped<CartService>(); の近くに追加 
+builder.Services.AddScoped<IOrderService, OrderService>();
+
+builder.Services.AddSignalR(); // builder.Build()より前 
 
 var app = builder.Build();
+
+// 追加
 if(app.Environment.IsDevelopment()) {
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     await SeedData.InitializeAsync(db);
 }
-
+/////////
+///
 // Configure the HTTP request pipeline.
 if(!app.Environment.IsDevelopment()) {
     app.UseExceptionHandler("/Home/Error");
@@ -38,11 +50,19 @@ if(!app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
-app.UseSession();                                                // このリクエストでSessionを使えるようにする
+
+// 追加
+app.UseSession(); // このリクエストでSession を使えるようにする
+/////////
+
 app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");          // 既定画面をMenuにする
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<StaffOrdersHub>("/staffOrdersHub"); // app.Run()より前
 
 app.Run();
