@@ -1,55 +1,105 @@
-﻿@* カート画面はSession から取り出したCartItem 一覧を受け取る *@
-@model List<SelfOrderSystem.Models.CartItem>
+﻿@model List<SelfOrderSystem.Models.CartItem>
 
 @{
     ViewData["Title"] = "カート";
-    var total = Model.Sum(x => x.LineTotal); // 画面表示用に合計金額を計算する
+    var total = Model.Sum(x => x.LineTotal);
 }
 
+<div class="cart-container">
 
-<h1 class="h3 mb-3">カート</h1>
-@* カートが空なら商品一覧へ戻る案内を表示する *@
-@if(Model.Count == 0) {
-    <div class="alert alert-info">カートは空です</div>
-    <a class="btn btn-primary" asp-controller="Menu" asp-action="Index">メニューへ戻る</a>
-} else {
-    @* カート内の商品を1 件ずつ表示する *@
-    @foreach(var item in Model) {
-        <div class="card mb-2">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <strong>@item.ProductName</strong><br />
-                        @item.UnitPrice.ToString("N0") 円 × @item.Quantity
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">カート</h1>
+        <span class="badge bg-success fs-6">
+            合計 @total.ToString("N0") 円
+        </span>
+    </div>
+
+    @if(!Model.Any()) {
+        <div class="alert alert-info">
+            カートは空です
+        </div>
+
+        <a class="btn btn-primary w-100"
+           asp-controller="Menu"
+           asp-action="Index">
+            メニューへ戻る
+        </a>
+    } else {
+        @foreach(var item in Model) {
+            <div class="card cart-item mb-3">
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <div class="product-name">
+                                @item.ProductName
+                            </div>
+
+                            <div class="text-muted">
+                                @item.UnitPrice.ToString("N0") 円 × @item.Quantity
+                            </div>
+                        </div>
+
+                        <div class="fw-bold fs-5 text-success">
+                            @item.LineTotal.ToString("N0") 円
+                        </div>
                     </div>
-                    <strong>@item.LineTotal.ToString("N0") 円</strong>
-                </div>
-                <div class="d-flex gap-2 mt-2">
-                    @* 数量変更はproductId とquantity をUpdate へPOST する *@
-                    <form asp-action="Update" method="post" class="d-flex gap-2">
-                        <input type="hidden" name="productId" value="@item.ProductId" />
-                        <input class="form-control" type="number" name="quantity"
-                               min="1" max="99" value="@item.Quantity" />
-                        <button class="btn btn-outline-primary" type="submit">変更</button>
-                    </form>
-                    @* 削除はproductId をRemove へPOST する *@
-                    <form asp-action="Remove" method="post">
-                        <input type="hidden" name="productId" value="@item.ProductId" />
-                        <button class="btn btn-outline-danger" type="submit">削除</button>
-                    </form>
+
+                    <div class="row mt-3 g-2">
+
+                        <div class="col-8">
+                            <form asp-action="Update"
+                                  method="post"
+                                  class="d-flex gap-2">
+
+                                <input type="hidden"
+                                       name="productId"
+                                       value="@item.ProductId" />
+
+                                <input class="form-control quantity-input"
+                                       type="number"
+                                       name="quantity"
+                                       min="1"
+                                       max="99"
+                                       value="@item.Quantity" />
+
+                                <button class="btn btn-outline-primary">
+                                    変更
+                                </button>
+
+                            </form>
+                        </div>
+
+                        <div class="col-4">
+                            <form asp-action="Remove"
+                                  method="post">
+
+                                <input type="hidden"
+                                       name="productId"
+                                       value="@item.ProductId" />
+
+                                <button class="btn btn-outline-danger w-100">
+                                    削除
+                                </button>
+
+                            </form>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
+        }
+
+        <div style="height:90px"></div>
+
+        <div class="checkout-bar">
+            <a class="btn btn-success btn-lg w-100"
+               asp-controller="Orders"
+               asp-action="Checkout">
+                注文内容を確認する
+                （@total.ToString("N0") 円）
+            </a>
         </div>
     }
-
-    @if(Model.Any()) {
-        <a class="btn btn-success btn-lg w-100"
-           asp-controller="Orders" asp-action="Checkout">
-            注文内容を確認する
-        </a>
-    }
-
-    <div class="text-end fs-4 fw-bold my-3">
-        合計 @total.ToString("N0") 円
-    </div>
-}
+</div>
