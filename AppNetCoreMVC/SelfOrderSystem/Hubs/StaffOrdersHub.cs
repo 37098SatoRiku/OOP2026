@@ -2,6 +2,14 @@
 namespace SelfOrderSystem.Hubs;
 // 店舗画面と注文状況画面が接続するHub 
 public class StaffOrdersHub : Hub {
+
+    // スタッフ権限のある人のみアクセス可
+    public async Task JoinStaff() {
+        if(Context.User?.IsInRole("Staff") != true)
+            throw new HubException("スタッフ認証が必要です");
+        await Groups.AddToGroupAsync(Context.ConnectionId, "staff");
+    }
+
     // 指定した注文だけの通知を受けるグループへ参加 
     public async Task JoinOrder(string publicId) {
         if(!Guid.TryParse(publicId, out var id))

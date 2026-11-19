@@ -4,8 +4,8 @@
 
 html {
     font-size: 14px;
-    position: relative;
     min-height: 100%;
+    position: relative;
 }
 
 @media (min-width: 768px) {
@@ -15,10 +15,11 @@ html {
 }
 
 body {
+    margin: 0;
     background: linear-gradient(135deg, #f8fafc, #eef6ff, #f5f3ff);
     font-family: "Yu Gothic UI", sans-serif;
     color: #1f2937;
-    margin-bottom: 60px;
+    /* 固定バー分 */
     padding-bottom: 90px;
 }
 
@@ -56,9 +57,9 @@ h1 {
 }
 
 .btn-outline-dark {
+    background: white;
     border: 2px solid #cbd5e1;
     color: #475569;
-    background: white;
 }
 
     .btn-outline-dark:hover {
@@ -71,8 +72,8 @@ h1 {
     background: linear-gradient(90deg, #3b82f6, #06b6d4);
     border: none;
     border-radius: 999px;
-    font-weight: bold;
     font-size: 1.1rem;
+    font-weight: bold;
     padding: 12px;
 }
 
@@ -85,18 +86,20 @@ h1 {
 ========================= */
 
 .card {
+    background: white;
     border: none;
     border-radius: 24px;
-    overflow: hidden;
-    background: white;
+    overflow: visible;
     box-shadow: 0 8px 25px rgba(0,0,0,.08);
     transition: .25s;
 }
 
+@media (hover:hover) {
     .card:hover {
         transform: translateY(-6px);
         box-shadow: 0 15px 35px rgba(59,130,246,.2);
     }
+}
 
 .card-body {
     padding: 1.5rem;
@@ -130,8 +133,14 @@ h1 {
 
 .fs-5 {
     color: #059669;
-    font-size: 2rem !important;
+    font-size: 1.25rem !important;
     font-weight: 800 !important;
+}
+
+.product-price {
+    color: #059669;
+    font-size: 2rem;
+    font-weight: 800;
 }
 
 /* =========================
@@ -167,10 +176,9 @@ h1 {
 }
 
     .alert-dark .btn-light {
-        border: none;
         background: white;
+        border: none;
         color: #f97316;
-        font-weight: bold;
     }
 
 /* =========================
@@ -185,21 +193,58 @@ h1 {
 }
 
 /* =========================
-   モバイルカートバー
+   カート画面
 ========================= */
 
-.mobile-cart-bar {
+.cart-item {
+    border-left: 6px solid #3b82f6;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.quantity-input {
+    width: 90px;
+    text-align: center;
+}
+
+.cart-empty {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* =========================
+   注文確認バー
+========================= */
+
+.checkout-bar {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: linear-gradient(135deg,#2563eb,#1d4ed8);
-    box-shadow: 0 -4px 20px rgba(0,0,0,.2);
-    z-index: 9999;
+    padding: 12px;
+    background: rgba(255,255,255,.97);
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.12);
+    z-index: 100;
+}
+
+    .checkout-bar .btn {
+        display: block;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+/* =========================
+   モバイルカートバー
+========================= */
+
+.mobile-cart-bar {
+    display: none;
 }
 
 .mobile-cart-info {
@@ -220,11 +265,10 @@ h1 {
 .mobile-cart-button {
     background: white;
     color: #2563eb;
-    border: none;
-    border-radius: 12px;
-    font-weight: 700;
-    padding: 10px 18px;
     text-decoration: none;
+    border-radius: 12px;
+    padding: 10px 18px;
+    font-weight: 700;
 }
 
     .mobile-cart-button:hover {
@@ -233,197 +277,54 @@ h1 {
     }
 
 /* =========================
-   カート画面
+   スマホ
 ========================= */
 
-.cart-summary {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    border-radius: 20px;
-    padding: 15px 20px;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,.08);
-    font-weight: 700;
-}
+@media (max-width: 991px) {
 
-.cart-summary-total {
-    color: #059669;
-    font-size: 1.3rem;
-    font-weight: 800;
-}
-
-.cart-item {
-    border-left: 6px solid #3b82f6;
-}
-
-    .cart-item:hover {
-        transform: none;
-        box-shadow: 0 8px 25px rgba(0,0,0,.08);
-    }
-
-.cart-product-name {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #0f172a;
-}
-
-.cart-product-detail {
-    color: #64748b;
-    font-size: .95rem;
-}
-
-.cart-price {
-    color: #059669;
-    font-size: 1.35rem;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-.cart-actions {
-    margin-top: 15px;
-}
-
-.quantity-input {
-    width: 90px;
-    text-align: center;
-}
-
-.cart-remove-btn {
-    width: 100%;
-}
-
-.cart-empty {
-    border-radius: 20px;
-    text-align: center;
-    background: white;
-    padding: 30px;
-    box-shadow: 0 8px 25px rgba(0,0,0,.08);
-}
-
-.cart-total-box {
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: right;
-    box-shadow: 0 8px 25px rgba(0,0,0,.08);
-}
-
-.cart-total-label {
-    color: #64748b;
-}
-
-.cart-total-price {
-    color: #059669;
-    font-size: 2rem;
-    font-weight: 800;
-}
-
-/* =========================
-   注文確認バー
-========================= */
-
-.cart-checkout-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255,255,255,.96);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid #e5e7eb;
-    padding: 12px 18px;
-    box-shadow: 0 -4px 20px rgba(0,0,0,.12);
-    z-index: 9999;
-}
-
-.cart-checkout-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cart-checkout-total {
-    display: flex;
-    flex-direction: column;
-}
-
-.cart-checkout-label {
-    color: #64748b;
-    font-size: .85rem;
-}
-
-.cart-checkout-price {
-    color: #059669;
-    font-size: 1.4rem;
-    font-weight: 800;
-}
-
-.cart-checkout-btn {
-    background: linear-gradient(90deg,#10b981,#059669);
-    color: white;
-    border-radius: 999px;
-    padding: 12px 28px;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-    .cart-checkout-btn:hover {
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(5,150,105,.3);
-    }
-
-/* =========================
-   スマホ対応
-========================= */
-
-@media (max-width: 768px) {
-
-    .cart-summary {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .cart-product-name {
-        font-size: 1rem;
-    }
-
-    .cart-price {
-        font-size: 1.1rem;
-    }
-
-    .quantity-input {
-        width: 70px;
-    }
-
-    .cart-checkout-content {
-        gap: 10px;
-    }
-
-    .cart-checkout-btn {
-        padding: 10px 16px;
-        font-size: .95rem;
-    }
-
-    .cart-checkout-price {
-        font-size: 1.1rem;
+    body {
+        padding-bottom: 120px;
     }
 
     .mobile-cart-bar {
-        padding: 12px;
+        display: flex;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        min-height: 70px;
+        z-index: 1030;
     }
 
     .mobile-cart-button {
         padding: 10px 14px;
         font-size: .9rem;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        touch-action: manipulation;
     }
 
     .mobile-cart-total {
         font-size: 1rem;
+    }
+
+    .product-name {
+        font-size: 1rem;
+    }
+
+    .quantity-input {
+        width: 70px;
+    }
+}
+
+/* =========================
+   PCでは非表示
+========================= */
+
+@media (min-width: 992px) {
+    .mobile-cart-bar {
+        display: none !important;
     }
 }

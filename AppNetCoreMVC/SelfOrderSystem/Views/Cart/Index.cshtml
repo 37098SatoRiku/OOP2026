@@ -7,45 +7,51 @@
 
 <div class="cart-container">
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h3 mb-0">カート</h1>
-        <span class="badge bg-success fs-6">
+    <div class="cart-summary">
+        <div>
+            商品数 @Model.Sum(x => x.Quantity) 点
+        </div>
+        <div class="cart-summary-total">
             合計 @total.ToString("N0") 円
-        </span>
+        </div>
     </div>
 
-    @if(!Model.Any()) {
-        <div class="alert alert-info">
-            カートは空です
-        </div>
+    <h1>カート</h1>
 
-        <a class="btn btn-primary w-100"
-           asp-controller="Menu"
-           asp-action="Index">
-            メニューへ戻る
-        </a>
+    @if(!Model.Any()) {
+        <div class="cart-empty">
+            <h4>カートは空です</h4>
+
+            <a class="btn btn-primary mt-3"
+               asp-controller="Menu"
+               asp-action="Index">
+                メニューへ戻る
+            </a>
+        </div>
     } else {
         @foreach(var item in Model) {
             <div class="card cart-item mb-3">
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between align-items-start">
+
                         <div>
-                            <div class="product-name">
+                            <div class="cart-product-name">
                                 @item.ProductName
                             </div>
 
-                            <div class="text-muted">
+                            <div class="cart-product-detail">
                                 @item.UnitPrice.ToString("N0") 円 × @item.Quantity
                             </div>
                         </div>
 
-                        <div class="fw-bold fs-5 text-success">
+                        <div class="cart-price">
                             @item.LineTotal.ToString("N0") 円
                         </div>
+
                     </div>
 
-                    <div class="row mt-3 g-2">
+                    <div class="row mt-3 g-2 cart-actions">
 
                         <div class="col-8">
                             <form asp-action="Update"
@@ -63,7 +69,8 @@
                                        max="99"
                                        value="@item.Quantity" />
 
-                                <button class="btn btn-outline-primary">
+                                <button type="submit"
+                                        class="btn btn-outline-primary">
                                     変更
                                 </button>
 
@@ -78,7 +85,8 @@
                                        name="productId"
                                        value="@item.ProductId" />
 
-                                <button class="btn btn-outline-danger w-100">
+                                <button type="submit"
+                                        class="btn btn-outline-danger cart-remove-btn">
                                     削除
                                 </button>
 
@@ -91,15 +99,26 @@
             </div>
         }
 
-        <div style="height:90px"></div>
+        <div class="cart-checkout-bar">
+            <div class="cart-checkout-content">
 
-        <div class="checkout-bar">
-            <a class="btn btn-success btn-lg w-100"
-               asp-controller="Orders"
-               asp-action="Checkout">
-                注文内容を確認する
-                （@total.ToString("N0") 円）
-            </a>
+                <div class="cart-checkout-total">
+                    <span class="cart-checkout-label">
+                        お支払い金額
+                    </span>
+                    <span class="cart-checkout-price">
+                        @total.ToString("N0") 円
+                    </span>
+                </div>
+
+                <a class="cart-checkout-btn"
+                   asp-controller="Orders"
+                   asp-action="Checkout">
+                    注文内容を確認する
+                </a>
+
+            </div>
         </div>
     }
+
 </div>
