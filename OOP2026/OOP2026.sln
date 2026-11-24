@@ -175,6 +175,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excercise03", "Excercise03\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfOrderSystem", "..\AppNetCoreMVC\SelfOrderSystem\SelfOrderSystem.csproj", "{0B383951-D4F0-D7F1-1345-3829E923E982}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VibeCoding", "VibeCoding", "{E3C51381-FC18-4157-B7BA-C3EAFC7A9DE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp", "..\VibeCoding\WeatherApp\WeatherApp.csproj", "{7B96350E-86FA-448C-A87D-F4B0176F8692}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -389,6 +393,10 @@ Global
 		{0B383951-D4F0-D7F1-1345-3829E923E982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B383951-D4F0-D7F1-1345-3829E923E982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B383951-D4F0-D7F1-1345-3829E923E982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B96350E-86FA-448C-A87D-F4B0176F8692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B96350E-86FA-448C-A87D-F4B0176F8692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B96350E-86FA-448C-A87D-F4B0176F8692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B96350E-86FA-448C-A87D-F4B0176F8692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -465,6 +473,7 @@ Global
 		{998D8E41-0D18-4FD8-AAB9-A76D4BAA6E79} = {CD952EE7-FC55-4A5D-A5DD-80B4A13EEBFF}
 		{870566FC-AC11-419F-BF8B-C1D528084F1F} = {998D8E41-0D18-4FD8-AAB9-A76D4BAA6E79}
 		{0B383951-D4F0-D7F1-1345-3829E923E982} = {4DCDE3ED-CFE4-4EE7-B29D-318D84C11850}
+		{7B96350E-86FA-448C-A87D-F4B0176F8692} = {E3C51381-FC18-4157-B7BA-C3EAFC7A9DE8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D607AF8-486B-4078-B513-E4267A42E05F}
